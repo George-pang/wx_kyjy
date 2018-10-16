@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/login_popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="login.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        注册
+    </div>
+
+    <div class="register-wrapper">
+        <div class="form-box">
+            <form action="#" method="POST" class="register-form" id="test_form">
+                <div class="input-box">
+                    <div class="r-form-item mob_1px_b">
+                        <input id="telInput_r" name="tel" class="r-tel r-re" type="text" placeholder="请输入手机号">
+                         <!--<i class="iconfont r-tel-qingkong">&#xe617;</i>-->
+                    </div>
+                    <div class="r-form-item mob_1px_b">
+                        <input id="txmInput_r" name="tel" class="r-tel r-re" type="text" placeholder="请输入图形码">
+                         <!--<i class="iconfont r-txm-qingkong">&#xe617;</i>-->
+                        <div class="r-get-txm mob_1px_l">
+                            <div id="getTxm"><img src="img/txm.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="r-form-item mob_1px_b">
+                        <input id="yzmInput_r" name="code" class="r-yzm r-re" type="text" placeholder="请输入验证码">
+                        <!--<i class="iconfont r-yzm-qingkong">&#xe617;</i>-->
+                        <div class="r-get-yanzheng mob_1px_l">
+                            <div class="r-get-text" id="getYzm">获取验证码</div>
+                        </div>
+                    </div>
+                    <div class="r-form-item mob_1px_b">
+                        <input id="pswInput_r" name="psw" class="r-psw r-re " type="password" placeholder="请设置密码">
+                        <!--<i class="iconfont r-psw-qingkong">&#xe617;</i>-->
+                    </div>
+                    <div class="r-form-item mob_1px_b">
+                        <input id="rePswInput_r" name="re_psw" class="r-psw r-re" type="password" placeholder="请确认密码">
+                        <!--<i class="iconfont r-repsw-qingkong">&#xe617;</i>-->
+                    </div>
+                </div>
+                <div class="register-agreement">
+                    <input type="checkbox" name="r-check" id="r-check">
+                    <label for="r-check">
+                        <i class="iconfont check-icon">&#xe60f;</i>
+                         我已阅读并同意<a href="#">《注册协议》</a>
+                    </label>
+                </div>
+                <div class="r-form-btn-zc ">
+                    <!--<a href="login_qk.html">-->
+                        <input class="r-zhuce-btn" id="r-zc-btn" type="button" value="注 册">
+                    <!--</a>-->
+                </div>
+                <div class="r-form-btn-dl ">
+                    <a href="login.html">
+                        <input class="r-denglu-btn" id="r-dl-btn" type="button" value="登 录">
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var value_3;
+        var value_4;
+        var value_5;
+        var value_6;
+        var value_7;
+        var check_value;
+
+        /** 注册页 验证注册手机号码格式 */
+        $('#telInput_r').on('focus', function () {
+            $('#telInput_r').on('blur', function () {
+                if ($('#telInput_r').val() != '') {
+					if(!isPoneAvailable($('#telInput_r'))){
+						alert_box("手机号码格式不对，请重新输入","","tc-click-l");
+					}
+                }
+            });
+        });
+
+//      /** 注册页 关闭弹窗 */
+//      closeTc($('.tc-click-r'), $('.tc-box-r'));
+
+
+        /** 注册页 验证两次密码输入 */
+        $('.r-psw').on('blur', function () {
+            value_5 = $('#pswInput_r').val();
+            value_6 = $('#rePswInput_r').val();
+            if (value_5 != '' && value_6 != '') {
+                if (value_5 != value_6) {
+                    alert_box("两次密码输入不一致，请重新输入！","","tc-click-l");
+                }
+            }
+        });
+
+        //注册协议前勾选按钮的状态切换
+        $(".register-agreement").on("click",function () {
+            check_value=$("#r-check")[0].checked;
+            if (check_value) {
+                $(".check-icon").addClass("active");
+            }else{
+                $(".check-icon").removeClass("active");
+            }
+        });
+
+        /** 注册页 验证完善必填项及同意注册协议 弹窗 */
+        $('#r-zc-btn').on('click', function () {
+            value_3 = $('#telInput_r').val();
+            value_4 = $('#yzmInput_r').val();
+            value_5 = $('#pswInput_r').val();
+            value_6 = $('#rePswInput_r').val();
+            value_7 = $('#txmInput_r').val();
+            check_value=$("#r-check")[0].checked;
+            if (value_3  == '' || value_4  == '' || value_5  == '' || value_6  == ''|| value_7  == '') {
+                alert_box("请完善必填项","","tc-click-l");
+            }else if(!check_value){
+                alert_box("请确认阅读并同意注册协议","","tc-click-l");
+            }
+
+        });
+
+
+
+        /* 注册页 注册按钮的状态切换--全部勾选后按钮显示可点击状态*/
+        $('#r-check').on('focus', function () {
+            timer_4 = setInterval(function () {
+                value_3 = $('#telInput_r').val();
+                value_4 = $('#yzmInput_r').val();
+                value_5 = $('#pswInput_r').val();
+                value_6 = $('#rePswInput_r').val();
+                value_7 = $('#txmInput_r').val();
+                check_value=$("#r-check")[0].checked;
+                if (value_3 != '' && value_4 != '' && value_5 != '' && value_6 != '' && value_7 != ''&&check_value) {
+                    $('.r-zhuce-btn').addClass('active');
+                } else if (value_3 == '' || value_4 == '' || value_5 == '' || value_6 == '' || value_7 == ''||!check_value) {
+                    $('.r-zhuce-btn').removeClass('active');
+                }
+            }, 100)
+        });
+
+        /*验证手机号是否注册，验证图形码是否正确，验证验证码是否正确-全部验证无误后点击注册按钮方可跳转页面*/
+    </script>
+</body>
+</html>

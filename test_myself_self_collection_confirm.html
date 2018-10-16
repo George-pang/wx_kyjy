@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>检测确认</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="old02_test_myself_self_collection.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        检测确认
+    </div>
+    <div class="scc-main-wrapper">
+        <div class="scc-tips">
+            <span>提示：</span>
+            受检者信息与账户信息不符，会存在个人信息安全问题，账户持有者是否同意他人送检，请签字确认。
+        </div>
+        <div class="sign-box">
+            <div class="box-title">
+                账户持有者手写签字
+            </div>
+            <div class="sign">
+
+            </div>
+        </div>
+    </div>
+    <div class="scc-next-icon">
+        <a href="#">
+            <div class="next-icon">
+                <img src="img/next.png" alt="">
+            </div>
+        </a>
+    </div>
+
+    <!--弹窗提示：请签字确认后再提交-->
+    <div class="tc-scc-sign">
+        <div class="tc-content-box">
+            <div class="tc-content">
+                <span class="tc-text">请先签字确认后再提交</span>
+                <div class="tc-click-box">
+                    <span class="tc-click">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--弹窗提示：预约成功-->
+    <div class="tc-scc-ycg">
+        <div class="tc-content-box">
+            <div class="tc-content">
+                <span class="tc-text">您已预约成功！</span>
+        <div class="tc-click-box">
+                    <span class="tc-click tc-click-scc">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            //验证是否已手签，手签后跳出预约成功弹窗，点击确定返回我的订单——已预约
+            $(".next-icon").on("click",function () {
+               $(".tc-scc-ycg").css("display","flex");
+               alert_box("tc-scc-ycg","您已预约成功！","my_order_reserved.html");
+            });
+        });
+    </script>
+</body>
+</html>

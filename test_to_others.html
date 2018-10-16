@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>赠与亲友</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="test-reservation.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        赠与亲友
+    </div>
+    <div class="t-form-wrapper">
+        <div class="t-form-box">
+            <div class="input-item">
+                <input type="text" name="" id="nameInput" placeholder="请输入亲友姓名">
+            </div>
+            <div class="input-item">
+                <input type="tel" name="" id="telInput" placeholder="请输入亲友的联系方式">
+            </div>
+            <div class="inform">
+                告知：本订单激活之后，非本人检测可转赠亲友，每个
+                订单仅限转赠一次。转增发起者需如实填写亲人姓名和
+                手机号，并获取新的激活码。
+            </div>
+
+        </div>
+        <div class="t-next-icon">
+            <a href="#">
+                <div class="t-next-icon">
+                    <img src="img/next.png" alt="">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        var flag;
+        var value_1;
+        var value_2;
+        //验证手机号输入
+        $(".t-next-icon").on("click",function () {
+            value_1=$("#nameInput").val().trim();
+            value_2=$("#telInput").val().trim();
+            if (value_1==""||value_2==""){
+                alert_box("tc-tto-btx","请完善必填项！","");
+                return false;
+            }else{
+                flag=isPoneAvailable($('#telInput'));
+                if (flag){
+                    console.log("3333");
+                    location.assign("qr_code.html");
+                }else {
+                    alert_box("tc-tto-tel","手机号格式输入有误，请重新输入！","");
+                    return false; //阻止冒泡
+                }
+            }
+        });
+    </script>
+</body>
+</html>

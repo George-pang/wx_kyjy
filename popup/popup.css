@@ -1,0 +1,43 @@
+/*弹窗样式*/
+.tc-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+.tc-container .tc-content-box {
+  width: 80vw;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.tc-container .tc-content-box .tc-content {
+  position: relative;
+  margin: 0 26px;
+  padding: 20px 0;
+}
+.tc-container .tc-content-box .tc-content .tc-text {
+  display: block;
+  word-break: break-all;
+  font-size: 16px;
+  line-height: 24px;
+}
+.tc-container .tc-content-box .tc-content .tc-click-box {
+  text-align: right;
+  display: block;
+}
+.tc-container .tc-content-box .tc-content .tc-click-box .tc-click {
+  display: inline-block;
+  margin-top: 14px;
+  margin-right: 2px;
+  word-break: break-all;
+  font-size: 16px;
+  color: #56cfd0;
+}
+/*# sourceMappingURL=popup.css.map */

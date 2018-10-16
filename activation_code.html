@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>我的订单-激活码</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/popup.js"></script>
+
+</head>
+<body>
+<div class="page-hd">
+        <span class="icon-back">
+            <a href="my_order.html">
+                <img src="img/back.png" alt=""/>
+            </a>
+        </span>
+    激活码
+</div>
+<div class="ac-form-box">
+    <div class="ac-form">
+        <!--<div class="form-tips">-->
+        <!--请输入卡号和密码激活-->
+        <!--</div>-->
+        <div class="form">
+            <div class="item">
+                <span>卡号</span>
+                <input class="input-item" type="text" id="numInput" placeholder="请输入激活卡卡号"/>
+            </div>
+            <div class="item">
+                <span>密码</span>
+                <input class="input-item" type="text" id="pswInput" placeholder="请输入激活卡密码"/>
+            </div>
+            <div class="confirm-btn">
+                确认
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $numInput = $("#numInput");
+        var $pswInput = $("#pswInput");
+        var value_1;
+        var value_2;
+        var timeId;
+
+        $(".input-item").on("focus", function () {
+            timeId=setInterval(function () {
+                value_1 = $numInput.val().trim();
+                value_2 = $pswInput.val().trim();
+                if (value_1 != "" && value_2 != "") {
+                    $(".confirm-btn").addClass("active");
+                } else {
+                    $(".confirm-btn").removeClass("active");
+                }
+            },100)
+        });
+
+        $(".confirm-btn").on("click",function () {
+            value_1 = $numInput.val().trim();
+            value_2 = $pswInput.val().trim();
+            if (value_1==""){
+                alert_box("tc-jhm-box","请输入激活卡卡号！");
+            }else if (value_2==""){
+                alert_box("tc-jhm-box","请输入激活卡密码！");
+            }else{
+                clearInterval(timeId);
+                location.assign("test-reservation.html");
+            }
+        })
+    })
+</script>
+</body>
+</html>

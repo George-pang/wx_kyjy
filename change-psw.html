@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>修改密码</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="personal_center.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        修改密码
+    </div>
+    <div class="cp-wrapper">
+        <div class="cp-form-box">
+            <div class="cp-form-tips">
+                请填写新密码
+            </div>
+            <form action="">
+                <div class="form-item">
+                    <div class="item-name">
+                        手机号
+                    </div>
+                    <div class="item-content">
+                        <input type="tel" value="1234567890" disabled>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        原密码
+                    </div>
+                    <div class="item-content">
+                        <input class="oldPsw input-item" type="password" placeholder="请确认原密码">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        新密码
+                    </div>
+                    <div class="item-content">
+                        <input class="pswInput input-item" type="password" placeholder="请输入新密码">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        确认密码
+                    </div>
+                    <div class="item-content">
+                        <input  class="re-pswInput input-item" type="password" placeholder="再次输入新密码">
+                        <div class="warning-box">
+                            <div class="warning">
+                                <img src="img/wrong.png" alt="">
+                                密码不一致
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="psw-ok-box">
+        <a href="#">
+            <div class="ok-icon-box">
+                <img src="img/ok.png" alt="">
+            </div>
+        </a>
+    </div>
+    <!--提示：原密码不正确-->
+
+    <!--提示：完善必填项弹窗-->
+
+    <script>
+        function alert_box(text, jump,type) {
+
+            //text 展示提示语
+
+            // jump  跳转连接 如不需要则传空
+
+            // type 确定按钮的样式
+
+
+            var html =
+                '<div class="tc-cp-btx" style="display:flex;" ><div class="tc-content-box"><div class="tc-content"><span class="tc-text">' +
+                text + '</span><div class="tc-click-box"> <span id="close_btn" class="'+type+'">确定</span></div></div></div></div>'
+            $('body').append(html);
+            $('#close_btn').on('click', function() {
+                if (jump !== '') {
+                    window.location.href = jump
+                } else {
+                    $(".tc-cp-btx").remove();
+                }
+            })
+        }
+    </script>
+    <script>
+        $(function () {
+            // 验证原密码是否正确-
+
+            $(".psw-ok-box").on("click",function () {
+                //验证必填项
+                var value_0=$(".oldPsw").val();
+                var value_1=$(".pswInput").val();
+                var value_2=$(".re-pswInput").val();
+                if (value_0==""||value_1==""||value_2=="") {
+                    alert_box("请完善必填项！","","tc-click");
+                }else{
+                    if (value_1!=value_2){
+                        $(".warning-box").css("display","block");
+                    }else{
+                        $(".warning-box").css("display","none");
+                        location.assign("login.html");
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

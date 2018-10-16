@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>忘记密码</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/login_popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="login.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        忘记密码
+    </div>
+    <div id="forgetPsw">
+        <div class="f-form-box">
+            <form action="get" class="f-form">
+                <div class="f-form-item mob_1px_b">
+                    <input id="telInput_f" type="tel" class="f-item-input" placeholder="请输入手机号">
+                    <!--<i class="iconfont f-tel-qingkong">&#xe617;</i>-->
+                </div>
+                <div class="f-form-item mob_1px_b">
+                    <input id="yzmInput_f" type="text" class="f-item-input" placeholder="验证码">
+                    <!--<i class="iconfont f-yzm-qingkong">&#xe617;</i>-->
+                    <div class="f-get-yanzheng mob_1px_l">
+                        <div class="f-get-text" id="getYzm">获取验证码</div>
+                    </div>
+                </div>
+                <div class="f-form-item mob_1px_b">
+                    <input id="pswInput_f" type="password" class="f-item-input f-psw" placeholder="设置密码">
+                    <!--<i class="iconfont f-psw-qingkong">&#xe617;</i>-->
+                </div>
+                <div class="f-form-item mob_1px_b">
+                    <input id="repswInput_f" type="password" class="f-item-input f-psw" placeholder="重复密码">
+                    <!--<i class="iconfont f-repsw-qingkong">&#xe617;</i>-->
+                </div>
+                <div class="f-form-btn">
+                    <input class="f-qd-btn" type="button" value="确 定">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    	var $telInput=$("#telInput");
+        /** 忘记密码页 验证注册手机号码--跳出弹窗 */
+        $('#telInput_f').on('focus', function () {
+            $('#telInput_f').on('blur', function () {
+                if ($('#telInput_f').val() != '') {
+                    if(!isPoneAvailable($telInput)){
+                       	alert_box("输入的手机号码无效，请重新输入","","tc-click-l")
+                       	 console.log("111");
+                    }
+                }
+            })
+        });
+
+        /** 忘记密码页 关闭 弹窗 */
+//      closeTc($('.tc-click-f'), $('.tc-box-f'));
+
+        /*  忘记密码页 确定按钮状态切换--添加active类，改变背景色*/
+        var value_f_tel;
+        var value_f_yzm;
+        var value_f_psw;
+        var value_f_repsw;
+        var $input=$('.f-item-input');
+        $input.on('focus', function () {
+
+            timer_5 = setInterval(function () {
+                value_f_tel = $('#telInput_f').val();
+                value_f_yzm = $('#yzmInput_f').val();
+                value_f_psw = $('#pswInput_f').val();
+                value_f_repsw = $('#repswInput_f').val();
+                if (value_f_tel != '' && value_f_yzm != '' && value_f_psw != '' && value_f_repsw != '') {
+                    $('.f-qd-btn').addClass('active');
+                } else if (value_f_tel == '' || value_f_yzm == '' || value_f_psw == '' || value_f_repsw == '') {
+                    $('.f-qd-btn').removeClass('active');
+
+                }
+            }, 100)
+        });
+
+
+        /** 忘记密码页 验证两次密码输入 */
+        $('.f-psw').on('blur', function () {
+            if (value_f_psw != '' && value_f_repsw != '') {
+                if (value_f_psw != value_f_repsw) {
+                    alert_box("两次密码输入不一致，请重新输入！","","tc-click-l");
+                }
+            }
+        });
+        /* 忘记密码页 验证码已经发送*/
+        $('#getYzm').on('click', function () {
+            /*layer.msg('验证码已经发送!');*/
+            $(this).text("验证码已发送");
+        });
+
+        /** 忘记密码页 完善必填项 */
+        $('.f-qd-btn').on('click', function () {
+        	value_f_tel = $('#telInput_f').val();
+            value_f_yzm = $('#yzmInput_f').val();
+            value_f_psw = $('#pswInput_f').val();
+            value_f_repsw = $('#repswInput_f').val();
+            if (value_f_tel == '' || value_f_yzm == '' || value_f_psw == '' || value_f_repsw == '') {
+                alert_box("请完善必填项","","tc-click-l");
+            }
+        })
+
+        /*忘记密码页  验证验证码输入*/
+    </script>
+</body>
+</html>

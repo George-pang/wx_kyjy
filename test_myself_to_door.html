@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>医护上门</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/distpicker.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="test_myself.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        医护上门
+    </div>
+    <div class="td-main-wrapper">
+        <div class="form-box-01">
+            <div class="form-tips">
+                请填写地址
+            </div>
+            <form action="">
+                <div class="item-name-box">
+                    <div class="item-name">省</div>
+                    <div class="item-name">市</div>
+                    <div class="item-name">县/区</div>
+                    <div class="item-name">详细地址</div>
+                </div>
+                <div class="item-content-box">
+                    <div data-toggle="distpicker" class="distpicker">
+                        <select data-province="---- 选择省 ----"></select>
+                        <select data-city="---- 选择市 ----"></select>
+                        <select data-district="---- 选择区 ----"></select>
+                    </div>
+                    <div class="detailed-addr">
+                        <textarea placeholder="请输入您的详细地址" ></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-box-02">
+            <div class="form-tips">
+                请选择时间
+            </div>
+            <form action="">
+                <div class="item-name-box">
+                    <div class="item-name">年/月/日</div>
+                    <div class="item-name">时间</div>
+                </div>
+                <div class="item-content-box">
+                    <input type="date" name="" id="sm-date">
+                    <select name="" id="sm-time">
+                        <option value="上午09:00~11:00">上午09:00~11:00</option>
+                        <option value="下午14:00~16:00">下午14:00~16:00</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="td-next-icon">
+            <a href="#">
+                <div class="next-icon">
+                    <img src="img/next.png" alt="">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        //三级联动初始化
+        $(function () {
+            $('#target').distpicker();
+        });
+    </script>
+    <script>
+        $(function () {
+            var  value_1;
+            var  value_2;
+            var  value_3;
+            var  value_4;
+            var  value_5;
+            var  value_6;
+            $(".next-icon").on("click",function () {
+                //完善必填项
+                value_1=$(".distpicker select").eq(0).val();
+                value_2=$(".distpicker select").eq(1).val();
+                value_3=$(".distpicker select").eq(2).val();
+                value_4=$(".detailed-addr textarea").val().trim();
+                value_5=$("#sm-date").val();
+                value_6=$("#sm-time").val();
+                if (value_1==""||value_2==""||value_3==""||value_4==""||value_5==""||value_6=="") {
+                    alert_box("tc-td-btx","请完善必填项！","");
+                }else{
+                    alert_box("tc-td-yycg","预约成功！医护将在预约时间内上门为您检测！","my_order_reserved.html");
+                }
+
+                // console.log(value_1);
+                // console.log(value_2);
+                // console.log(value_3);
+                // console.log(value_4);
+                // console.log(value_5);
+                // console.log(value_6);
+            });
+        });
+    </script>
+</body>
+</html>

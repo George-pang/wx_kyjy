@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>项目检测申请单</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/distpicker.js"></script>
+    <script src="js/popup.js"></script>
+    <style type="text/css">
+        body{
+            padding: 69px 16px 44px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="#">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        项目检测申请单
+    </div>
+    <div class="taf-form-box-01">
+        <div class="form-tips">
+            受检人信息
+        </div>
+        <form action="">
+            <div class="form-item">
+                <div class="item-name">
+                    姓名
+                </div>
+                <div class="item-content">
+                    <input type="text" id="nameInput" placeholder="请输入姓名">
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="item-name">
+                    年龄
+                </div>
+                <div class="item-content">
+                    <input type="text" id="ageInput" placeholder="请输入年龄">
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="item-name">
+                    性别
+                </div>
+                <div class="item-content">
+                    <input type="text" id="sexInput" placeholder="请输入性别">
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="item-name">
+                    身高
+                </div>
+                <div class="item-content">
+                    <input type="text" id="heightInput" placeholder="请输入身高">
+                    <span>cm</span>
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="item-name">
+                    体重
+                </div>
+                <div class="item-content">
+                    <input type="text" id="weightInput" placeholder="请输入体重">
+                    <span>kg</span>
+                </div>
+            </div>
+             <div class="form-item">
+                <div class="item-name">
+                    身份证号
+                </div>
+                <div class="item-content">
+                    <input type="text" id="idInput" placeholder="请输入身份证号 ">
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="item-name">
+                    吸烟史
+                </div>
+                <div class="item-content">
+                    <label class="single-select">
+                        <input type="radio" name="smoking">
+                        <i class="iconfont">&#xe60f;</i>
+                        <span>是</span>
+                    </label>
+                    <label class="single-select">
+                        <input type="radio" name="smoking" checked>
+                        <i class="iconfont active">&#xe60f;</i>
+                        <span>否</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="item-name">
+                    饮酒史
+                </div>
+                <div class="item-content">
+                    <label class="single-select">
+                        <input type="radio" name="drinking">
+                        <i class="iconfont">&#xe60f;</i>
+                        <span>是</span>
+                    </label>
+                    <label class="single-select">
+                        <input type="radio" name="drinking" checked>
+                        <i class="iconfont active">&#xe60f;</i>
+                        <span>否</span>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="taf-form-box-02">
+        <div class="form-tips">
+            受检者的直系亲属中：
+        </div>
+        <form action="">
+            <div class="form-item">
+                <label class="single-select">
+                    <input type="radio" name="colonic-disease">
+                    <i class="iconfont">&#xe60f;</i>
+                    <span>是</span>
+                </label>
+                <label class="single-select">
+                    <input type="radio" name="colonic-disease" checked>
+                    <i class="iconfont active">&#xe60f;</i>
+                    <span>否</span>
+                </label>
+                <span>结肠病史</span>
+            </div>
+            <div class="form-item">
+                <label class="single-select">
+                    <input type="radio" name="other-disease">
+                    <i class="iconfont">&#xe60f;</i>
+                    <span>是</span>
+                </label>
+                <label class="single-select">
+                    <input type="radio" name="other-disease" checked>
+                    <i class="iconfont active">&#xe60f;</i>
+                    <span>否</span>
+                </label>
+                <span>结肠病史</span>
+            </div>
+        </form>
+    </div>
+    <div class="taf-form-box-03">
+        <div class="form-tips">
+            采血时，受检者本人：
+        </div>
+        <form action="">
+            <div class="form-item">
+                <label class="single-select">
+                    <input type="radio" name="pregnancy">
+                    <i class="iconfont">&#xe60f;</i>
+                    <span>是</span>
+                </label>
+                <label class="single-select">
+                    <input type="radio" name="pregnancy" checked>
+                    <i class="iconfont active">&#xe60f;</i>
+                    <span>否</span>
+                </label>
+                <span>处于孕期</span>
+            </div>
+            <div class="form-item">
+                <label class="single-select">
+                    <input type="radio" name="diabetes">
+                    <i class="iconfont">&#xe60f;</i>
+                    <span>是</span>
+                </label>
+                <label class="single-select">
+                    <input type="radio" name="diabetes" checked>
+                    <i class="iconfont active">&#xe60f;</i>
+                    <span>否</span>
+                </label>
+                <span>糖尿病</span>
+            </div>
+            <div class="form-item item-txt">
+                <div class="item-row-01">
+                    <label class="single-select">
+                        <input type="radio" name="colon-cancer">
+                        <i class="iconfont">&#xe60f;</i>
+                        <span>是</span>
+                    </label>
+                    <label class="single-select">
+                        <input type="radio" name="colon-cancer" checked>
+                        <i class="iconfont active">&#xe60f;</i>
+                        <span>否</span>
+                    </label>
+                    <span>结肠癌或其他病史</span>
+                </div>
+                <div class="item-row-02">
+                    <textarea placeholder="如有,请填写你的病史说明" id="colon-cancer" ></textarea>
+                </div>
+
+            </div>
+            <div class="form-item item-txt">
+                <div class="item-row-01">
+                    <label class="single-select">
+                        <input type="radio" name="digestive-tract-diseases">
+                        <i class="iconfont">&#xe60f;</i>
+                        <span>是</span>
+                    </label>
+                    <label class="single-select">
+                        <input type="radio" name="digestive-tract-diseases" checked>
+                        <i class="iconfont active">&#xe60f;</i>
+                        <span>否</span>
+                    </label>
+                    <span>慢性消化道疾病</span>
+                </div>
+                <div class="item-row-02">
+                    <textarea placeholder="如有,请填写你的病史说明" id="digestive-tract-diseases" ></textarea>
+                </div>
+
+            </div>
+            <div class="form-item item-txt">
+                <div class="item-row-01">
+                    <label class="single-select">
+                        <input type="radio" name="taking-medicine">
+                        <i class="iconfont">&#xe60f;</i>
+                        <span>是</span>
+                    </label>
+                    <label class="single-select">
+                        <input type="radio" name="taking-medicine" checked>
+                        <i class="iconfont active">&#xe60f;</i>
+                        <span>否</span>
+                    </label>
+                    <span>正在服药</span>
+                </div>
+                <div class="item-row-02">
+                    <textarea placeholder="如有,请填写你的病史说明" id="taking-medicine" ></textarea>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="taf-form-box-04">
+        <div class="form-tips">
+            采血时，受检者本人是否存在，可多选：
+        </div>
+        <form action="">
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    慢性腹泻
+                 </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    慢性便秘
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    黏液血便
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    慢性胆囊炎或手术史
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    慢性阑尾炎或切除史
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    慢性腹泻
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    肾功能异常
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    肠道息肉史
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    肝功能异常
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    长期精神压抑
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    结节或肿物（甲状腺/肺/腹部）
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    肾功能异常
+                </label>
+            </div>
+            <div class="form-item other-diseases">
+                <label class="check-box">
+                    <input type="checkbox">
+                    <img src="img/ok1.png" alt="">
+                    其他器官严重疾病
+                </label>
+                <textarea placeholder="如有,请说明" id="other-diseases"></textarea>
+            </div>
+        </form>
+        <div class="save-btn-box">
+            <div class="save-btn">
+                保存本页
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(function(){
+            // 验证姓名
+            function isName(name) {
+                var pattern = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
+                return pattern.test(name);
+            }
+            // 验证年龄 0~99岁
+                function isAge(age) {
+                var pattern = /^\d{1,2}$/;
+                return pattern.test(age);
+            }
+            // 验证性别
+                function isSex(sex) {
+                var pattern = /^(男|女)$/;
+                return pattern.test(sex);
+            }
+            // 验证身高
+                function isHeight(height) {
+                var pattern = /^\d{1,3}$/;
+                return pattern.test(height);
+            }
+             // 验证体重
+                function isWeight(weight) {
+                var pattern = /^\d{1,3}$/;
+                return pattern.test(weight);
+            }
+            // 验证手机号
+            function isPhoneNo(phone) {
+                var pattern = /^1[34578]\d{9}$/;
+                return pattern.test(phone);
+            }
+            // 验证身份证
+            function isCardNo(card) {
+                var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                return pattern.test(card);
+            }
+        
+        //输入框失焦验证输入函数封装
+        function checkOut(input,reg,text){
+            input.on("blur",function(){
+                if(reg.test(input.val().trim())){
+                    return false;
+                }else{
+                    alert_box("tc-tfp-btx",text);
+                }
+            });
+        }    
+        
+        //输入框失焦时验证输入
+        checkOut($('#nameInput'),/^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/,"姓名输入有误，请重新输入！");
+        checkOut($('#ageInput'),/^\d{1,2}$/,"请输入真实的年龄！");
+        checkOut($('#sexInput'),/^(男|女)$/,"性别输入有误！");
+        checkOut($('#heightInput'),/^\d{1,3}$/,"请输入真实的身高！");
+        checkOut($('#weightInput'),/^\d{1,3}$/,"请输入真实的体重！");
+        checkOut($('#idInput'),/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,"请输入真实的身份证号！");
+
+        //点击保存时验证姓名、年龄、性别、身高、体重、身份证输入
+        $(".save-btn").on("click",function(){
+            var value_1=$("#nameInput").val().trim();
+            var value_2=$("#ageInput").val().trim();
+            var value_3=$("#sexInput").val().trim();
+            var value_4=$("#heightInput").val().trim();
+            var value_5=$("#weightInput").val().trim();
+            var value_6=$("#idInput").val().trim();
+            if(value_1==""||value_2==""||value_3==""||value_4==""||value_5==""||value_6==""){
+                alert_box("tc-tfp-btx","请完善必填项！");
+                return false;
+            }else if(!isName(value_1)){
+                alert_box("tc-tfp-btx","姓名输入有误，请重新输入！");
+                return false;
+            }else if(!isAge(value_2)){
+                alert_box("tc-tfp-btx","请输入真实的年龄！");
+                return false;
+            }else if(!isSex(value_3)){
+                alert_box("tc-tfp-btx","性别输入有误！");
+                return false;
+            }else if(!isHeight(value_4)){
+                alert_box("tc-tfp-btx","请输入真实的身高！");
+                return false;
+            }else if(!isWeight(value_5)){
+                alert_box("tc-tfp-btx","请输入真实的体重！");
+                return false;
+            }else if(!isCardNo(value_6)){
+                alert_box("tc-tfp-btx","请输入真实的身份证号！");
+                return false;
+            }
+			location.assign("test_application_form_02.html");
+		});
+        
+        //单选按钮选中状态切换
+        // $(".single-select").on("click",function(){
+        //    $(this).siblings(".single-select").find(".iconfont").removeClass("active");
+        //    $(this).find(".iconfont").addClass("active");
+        // //    console.log($(this).find("input").prop("checked"));
+        // });
+        $(".single-select input").on("click",function(){
+           $(this).siblings(".iconfont").addClass("active");
+           $(this).parent().siblings(".single-select").find(".iconfont").removeClass("active");
+           console.log($(this).prop("checked"));
+           console.log($(this).parent().siblings(".single-select").find("input").prop("checked"));
+        });
+
+        //多选按钮选中状态切换
+        $(".check-box input").on("click",function(){
+            console.log("1111");
+            if($(this).prop("checked")==true){
+                $(this).siblings("img").addClass("active");
+            }else{
+                $(this).siblings("img").removeClass("active");
+            }
+
+        });
+
+    });
+
+
+</script>
+</body>
+</html>

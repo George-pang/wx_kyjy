@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>项目检测单</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/distpicker.js"></script>
+</head>
+<body>
+<div class="page-hd">
+        <span class="icon-back">
+            <a href="test_myself.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+    项目检测单
+</div>
+<div class="taf-main-wrapper">
+    <form action="">
+        <div class="input-item-box">
+            <div class="input-tips">
+                联系人信息（受检人填写）
+            </div>
+            <div class="inner-box">
+                <div class="input-item">
+                    <div class="item-name">联系人</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入联系人姓名" id="per-name">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">电话</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入联系电话" id="per-tel">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">收件邮箱</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入收件邮箱" id="per-email">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">收件地址</div>
+                    <div class="item-content">
+                        <textarea placeholder="请输入收件地址" id="per-address"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="agreement">
+            <input type="checkbox" name="sc-check" id="sc-check">
+            <label for="sc-check">
+                <i class="iconfont check-icon"></i>
+                <div class="text">
+                    我已阅读并同意
+                    <a href="bind_per_info_consent_form.html">
+                        《肠癌早筛无创甲基化检测知情同意书》
+                    </a>
+                </div>
+            </label>
+        </div>
+        <div class="submit">
+            <!--<a href="test_myself_self_collection_confirm.html">-->
+            <div class="submit-btn">
+                提交
+            </div>
+            <!--</a>-->
+        </div>
+    </form>
+</div>
+
+
+<script>
+    function alert_box(text, jump,type) {
+
+        //text 展示提示语
+
+        // jump  跳转连接 如不需要则传空
+
+        // type 确定按钮的样式
+
+
+        var html =
+            '<div class="tc-taf-tel" style="display:flex;" ><div class="tc-content-box"><div class="tc-content"><span class="tc-text">' +
+            text + '</span><div class="tc-click-box"> <span id="close_btn" class="'+type+'">确定</span></div></div></div></div>'
+        $('body').append(html)
+        $('#close_btn').on('click', function() {
+            if (jump !== '') {
+                window.location.href = jump
+            } else {
+                $(".tc-taf-tel").remove();
+            }
+        })
+    }
+</script>
+<script>
+    var value_1;
+    var value_2;
+    var value_3;
+    var value_4;
+    var check_value;
+
+    var $telInput=$("#per-tel");
+    var $emailInput=$("#per-email");
+
+    //验证手机号输入
+    $telInput.on("focus", function () {
+        $telInput.on("blur", function () {
+            if ($telInput.val() != "") {
+                if(!isPoneAvailable($telInput)){
+                    alert_box("输入的手机号码无效，请重新输入","","tc-click");
+                }
+            }
+        });
+    });
+
+    //验证邮箱输入
+    function isEmailNum($emailInput) {
+        var pattern =/\w+((-w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+/;
+        if(!pattern.test($emailInput.val())){
+            return false;
+        }else {
+            return true;
+        }
+    }
+    $emailInput.on("focus", function () {
+        $emailInput.on("blur", function () {
+            if ($emailInput.val() != ""){
+                if(!isEmailNum($emailInput)){
+                    alert_box("邮箱格式不对，请重新输入","","tc-click");
+                }
+            }
+        });
+    });
+
+
+    //我已知悉 点击勾选状态切换
+    $(".agreement").on("click",function () {
+        check_value=$("#sc-check")[0].checked;
+        if (check_value) {
+            $(".check-icon").addClass("active");
+        }else{
+            $(".check-icon").removeClass("active");
+        }
+    });
+
+
+    // 验证手机号
+    function isPhoneNo(phone) {
+        var pattern = /^1[34578]\d{9}$/;
+        return pattern.test(phone);
+    }
+
+    // 验证身份证
+    function isEmail(email) {
+        var pattern = /\w+((-w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+/;
+        return pattern.test(email);
+    }
+
+    $(".submit-btn").on("click",function () {
+        value_1=$("#per-name").val().trim();
+        value_2=$("#per-tel").val().trim();
+        value_3=$("#per-email").val().trim();
+        value_4=$("#per-address").val().trim();
+        check_value=$("#sc-check")[0].checked;
+        console.log(check_value);
+        if (value_1==""||value_2==""||value_3==""||value_4==""){
+            alert_box("请完善必填项","","tc-click");
+        }else if (!isPhoneNo(value_2)){
+            alert_box("手机号码格式不对，请重新输入","","tc-click");
+        }else if (!isEmail(value_3)){
+            alert_box("邮箱格式不对，请重新输入","","tc-click");
+        }else if(!check_value){
+            alert_box("请确认阅读并知悉知情同意书！","","tc-click");
+        }else{
+            alert_box("已绑定采样盒,请您耐心等待检测结果！","my_order_bound.html","tc-click");
+        }
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>修改地址</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/distpicker.js"></script>
+    <script src="js/login_base.js"></script>
+</head>
+<body>
+<div class="page-hd">
+        <span class="icon-back">
+            <a href="address_manage.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+    修改地址
+</div>
+<div class="add-form-wrapper">
+    <div class="form-box">
+        <div class="form-tips">
+            请填写要修改的内容
+        </div>
+        <form action="" class="disticker-form">
+            <div class="item-name-box">
+                <div class="item-name">姓名</div>
+                <div class="item-name">手机号</div>
+                <div class="item-name">省</div>
+                <div class="item-name">市</div>
+                <div class="item-name">县/区</div>
+                <div class="item-name">详细地址</div>
+            </div>
+            <div class="item-content-box">
+                <div class="item-content">
+                    <input type="text" value="鹍远健康"  class="nameInput"/>
+                </div>
+                <div class="item-content">
+                    <input type="text" value="18555505063" class="telInput"/>
+                </div>
+                <div data-toggle="distpicker" class="distpicker">
+                    <select data-province="安徽省" value="安徽省"></select>
+                    <select data-city="合肥市" value="合肥市"></select>
+                    <select data-district="瑶海区" value="瑶海区"></select>
+                </div>
+                <div class="item-content">
+                    <textarea name="" id="detailed-addr" cols="30" rows="2" style="color: #999;">锦绣大道68号清华启迪科技城1号楼</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="add-ok-box">
+    <!--<a href="#">-->
+    <div class="icon-ok-box">
+        <img src="img/ok.png" alt="">
+    </div>
+    <!--</a>-->
+</div>
+
+<!--弹窗提示：手机号格式错误-->
+<div class="tc-add-tel">
+    <div class="tc-content-box">
+        <div class="tc-content">
+            <span class="tc-text">手机号码格式不对,请重新输入！</span>
+            <div class="tc-click-box">
+                <span class="tc-click">确定</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹窗提示：完善必填项-->
+<div class="tc-add-btx">
+    <div class="tc-content-box">
+        <div class="tc-content">
+            <span class="tc-text">请完善必填项后再提交！</span>
+            <div class="tc-click-box">
+                <span class="tc-click">确定</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+	function alert_box(text, jump,type) {
+				
+			//text 展示提示语
+				
+			// jump  跳转连接 如不需要则传空 
+				
+			// type 确定按钮的样式
+				
+				 
+			var html =
+				'<div class="tc-add-btx" style="display:flex;" ><div class="tc-content-box"><div class="tc-content"><span class="tc-text">' +
+				text + '</span><div class="tc-click-box"> <span id="close_btn" class="'+type+'">确定</span></div></div></div></div>'
+			$('body').append(html)
+
+			$('#close_btn').on('click', function() {
+				if (jump !== '') {
+					window.location.href = jump
+				} else {
+					$(".tc-add-btx").remove();
+				}
+			})
+		}
+</script>
+	
+<script>
+    $(function () {
+        var flag;
+        var value_1;
+        var value_2;
+        var value_3;
+        var value_4;
+        var value_5;
+        var value_6;
+
+
+        //验证手机号输入
+        $(".icon-ok-box").on("click",function () {
+            value_1=$(".nameInput").val().trim();
+            value_2=$(".telInput").val().trim();
+            value_3=$(".distpicker select").eq(0).val();
+            value_4=$(".distpicker select").eq(1).val();
+            value_5=$(".distpicker select").eq(2).val();
+            value_6=$("#detailed-addr").val().trim();
+            console.log(value_1);
+            console.log(value_2);
+            console.log(value_3);
+            console.log(value_4);
+            console.log(value_5);
+            console.log(value_6);
+            if (value_1==""||value_2==""||value_3==""||value_4==""||value_5==""||value_6==""){
+               alert_box("请完善必填项","","tc-click");
+            }else{
+                flag=isPoneAvailable($('.telInput'));
+                console.log(flag);
+                if (flag){
+                    // console.log("3333");
+                    location.assign("address_manage.html");
+                }else{
+                    	alert_box("手机号格式输入错误,请重新输入！","","tc-click")
+                }
+            }
+        });
+        //关闭弹窗
+//      closeTc($('.tc-click'), $('.tc-add-tel'));
+//      closeTc($('.tc-click'), $('.tc-add-btx'));
+    });
+</script>
+</body>
+</html>

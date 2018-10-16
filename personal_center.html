@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="login.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        个人中心
+    </div>
+    <div class="my-bg">
+        <img src="img/mybg.jpg" alt="">
+        <div class="my-profile-box">
+            <a href="#">
+                <div class="my-profile">
+                    <div class="my-avatar">
+                        <img src="img/avatar.jpg" alt="">
+                    </div>
+                    <div class="my-info">
+                        <div class="my-name">
+                            锋芒
+                        </div>
+                        <div class="my-id">
+                            ID:19960107
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="per-item-box">
+            <div class="per-item">
+                <a href="my_order.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon1.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            我的订单
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="examining_report.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon2.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            检测报告
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="coupon.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon3.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            优惠劵
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="personal_profile.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon4.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            个人资料
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="change-psw.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon5.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            修改密码
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="address_manage.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon6.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            地址管理
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="#">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon7.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            客服电话
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="#">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon8.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            关于鹍远
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="per-item">
+                <a href="login.html">
+                    <div class="item">
+                        <div class="item-icon">
+                            <img src="img/icon9.png" alt="">
+                        </div>
+                        <div class="item-title">
+                            退出登录
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--修改头像弹窗-->
+    <div class="tc-cg-avatar">
+        <div class="cg-avatar">
+            <div class="take-pic">
+                拍照
+            </div>
+            <div class="select-f-album">
+                从相册选择
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $(".my-avatar").on("click",function () {
+                $(".tc-cg-avatar").css("display","block");
+            });
+        });
+    </script>
+</body>
+</html>

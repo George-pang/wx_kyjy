@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>定点采血中心</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/distpicker.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+<div class="page-hd">
+    <span class="icon-back">
+        <a href="test_myself.html">
+            <img src="img/back.png" alt=""  />
+        </a>
+    </span>
+    定点采血中心
+</div>
+<div class="tfp-main-wrapper">
+    <div class="form-box-01">
+        <div class="form-tips">
+            请选择时间
+        </div>
+        <form action="">
+            <div class="item-name-box">
+                <div class="item-name">年/月/日</div>
+                <div class="item-name">时间</div>
+            </div>
+            <div class="item-content-box">
+                <input type="date" name="" id="sm-date">
+                <select name="" id="sm-time">
+                    <option value="上午09:00~11:00">上午09:00~11:00</option>
+                    <option value="下午14:00~16:00">下午14:00~16:00</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="form-box-02">
+        <div class="form-tips">
+            请选择采血中心
+        </div>
+        <form action="">
+            <div class="item-name-box">
+                <div class="item-name">城市</div>
+                <div class="item-name">采血中心</div>
+            </div>
+            <div class="item-content-box">
+                <div class="city">
+                    <input type="text" value="上海市" readonly>
+                </div>
+                <div class="detailed-addr">
+                    <select name="" id="fp-addr">
+                        <!--<option value="请选择离您最近的采血点">请选择采血点</option>-->
+                        <option value="浦东新区世纪大道1920号" title="浦东新区世纪大道1920号">浦东新区世纪大道1920号</option>
+                        <option value="黄浦区方浜中路249号" title="黄浦区方浜中路249号">黄浦区方浜中路249号</option>
+                        <option value="徐汇区华发路236东阔生活广场F1" title="徐汇区华发路236东阔生活广场F1">徐汇区华发路236东阔生活广场F1</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="td-next-icon">
+        <a href="#">
+            <div class="next-icon">
+                <img src="img/next.png" alt="">
+            </div>
+        </a>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var  value_1;
+        var  value_2;
+        var  value_3;
+
+        $(".next-icon").on("click",function () {
+            //完善必填项
+            value_1=$("#sm-date").val();
+            value_2=$("#sm-time").val();
+            value_3=$("#fp-addr").val();
+            if (value_1==""||value_2==""||value_3=="") {
+                alert_box("tc-tfp-btx","请完善必填项","");
+            }else{
+                alert_box("tc-tfp-yycg","预约成功！请在约定时间到达采血中心进行检测！","my_order_reserved.html");
+            }
+
+            // console.log(value_1);
+            // console.log(value_2);
+            // console.log(value_3);
+        });
+
+
+        //截取select中的字符长度--超出15个汉字显示省略号
+        $("#fp-addr").on("focus",function () {
+            $("#fp-addr option").each(function () {
+                var value_4=$(this).text();
+                if (value_4.length>=15){
+                    value_4=value_4.substring(0,14)+"...";
+                    // $(this).val(value_4);
+                    $(this).text(value_4);
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/login_popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="login.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        登录
+    </div>
+    <div class="l-box">
+        <div class="l-logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="login-wrapper">
+            <div class="form-box">
+                <form action="get" class="login-form">
+                    <div class="input-wrapper">
+                        <div class="l-form-item mob_1px_b">
+                            <div class="icon-tel l-icon">
+                                <img src="img/phone.png" alt=""/>
+                            </div>
+                            <div class="input-box">
+                                <input id="telInput" class="user-tel l-input-" type="text" placeholder="请输入手机号">
+                                <!--<i class="iconfont l-tel-qingkong">&#xe617;</i>-->
+                            </div>
+                        </div>
+                        <div class="l-form-item  mob_1px_b ">
+                            <div class="icon-psw l-icon">
+                                <img src="img/mima.png" alt="">
+                            </div>
+                            <div class="input-box">
+                                <input id="pswInput" class="l-psw l-input-item" type="text" placeholder="请输入密码">
+                                <!--<i class="iconfont l-psw-qingkong">&#xe617;</i>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-form-psw">
+                        <a class="to-set-psw" href="login_reset_psw.html">忘记密码？</a>
+                    </div>
+                    <div class="l-form-btn ">
+                       <!-- <a href="personal_center.html">-->
+                            <input class="l-denglu-btn" type="button" value="登 录">
+                     <!--   </a>-->
+                    </div>
+                    <div class="l-form-btn">
+                        <a href="login_register.html">
+                            <input class="l-zhuce-btn" type="button" value="注册">
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var $telInput=$('#telInput');
+        var $pswInput=$('#pswInput');
+
+        /** 登录页 验证手机号 */
+        $telInput.on('focus', function () {
+            $('#telInput').on('blur', function () {
+                var valLoginput = $('#telInput').val();
+                if (!(isNaN(valLoginput))) {
+                    if ($telInput.val() != '') {
+                       if(!isPoneAvailable($telInput)){
+                       	alert_box("输入的手机号码无效，请重新输入","","tc-click-l")
+                       	 console.log("111");
+                       }
+                    }
+                }
+            })
+        });
+
+        /** 登录页  关闭弹窗 */
+		// closeTc($('.tc-click-l'), $('.tc-box-l'));
+        // closeTc($('.tc-click'), $('.tc-box-l'));
+
+        /* 登录页 登录按钮的状态切换--添加/移除 active类*/
+        var value_1;
+        var value_2;
+
+        $(".l-input-item").on('focus', function () {
+            timer_3 = setInterval(function () {
+                value_1 = $('#telInput').val();
+                value_2 = $('#pswInput').val();
+                if (value_1 != '' && value_2 != '') {
+                    $('.l-denglu-btn').addClass('active');
+                } else if (value_1 == '' || value_2 == '') {
+                    $('.l-denglu-btn').removeClass('active');
+                }
+            }, 100);
+        });
+
+
+        /** 登录页 验证必填项*/
+        $('.l-denglu-btn').on('click', function () {
+        	value_1 = $('#telInput').val();
+            value_2 = $('#pswInput').val();
+            if (value_1 == '' || value_2 == '') {
+			// $('.tc-rq-l').css('display', 'flex');
+			alert_box("请完善必填项","","tc-click-l");
+            }
+        })
+
+        /*点击登录按钮-验证手机号和密码输入 对应跳出 密码错误提示框/账号密码错误提示框或者跳转首页*/
+    </script>
+</body>
+</html>

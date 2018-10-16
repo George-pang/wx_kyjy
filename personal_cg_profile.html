@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>修改个人资料</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+    <div class="page-hd">
+        <span class="icon-back">
+            <a href="personal_profile.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+        修改个人资料
+    </div>
+    <div class="profile-box">
+        <div class="form-box">
+            <div class="form-tips">
+                请填写要修改的内容
+            </div>
+            <form action="">
+                <div class="form-item">
+                    <div class="item-name">
+                        姓名
+                    </div>
+                    <div class="item-content">
+                        <input type="text" name="" id="per-name" value="鹍远健康" >
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        性别
+                    </div>
+                    <div class="item-content">
+                        <input type="text" name="" id="per-sex" value="男" >
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        年龄
+                    </div>
+                    <div class="item-content">
+                        <input type="text" name="" id="per-age" value="22" >
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        联系方式
+                    </div>
+                    <div class="item-content">
+                        <input type="tel" name="" id="per-tel" value="18555505063" >
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="item-name">
+                        身份证号码
+                    </div>
+                    <div class="item-content">
+                        <input type="text" name="" id="per-id" value="342401199612157896" >
+                    </div>
+                </div>
+                <a href="select_address.html">
+                    <div class="form-item per-address">
+                        <div class="item-name">
+                            收件地址
+                        </div>
+                        <div class="item-content">
+                            <textarea name="" id="per-address" cols="30" rows="2" readonly>上海市徐汇区桂平路418号610室上海基分信息科技有限公司</textarea>
+                        </div>
+                    </div>
+                </a>
+            </form>
+            <div class="cg-profile" style="margin-top: 7px;padding: 0 18px">
+                <!--<a href="personal_profile.html">-->
+                <div class="bc-icon-box">
+                    保存
+                </div>
+                <!--</a>-->
+            </div>
+        </div>
+    </div>
+
+    <!--弹窗提示：手机号格式错误-->
+
+    <!--弹窗提示：身份证号码格式错误-->
+
+    <!--弹窗提示：完善必填项-->
+
+
+
+
+    <script>
+        var $telInput=$("#per-tel");
+        var $idInput=$("#per-id");
+
+        //验证手机号输入
+        $telInput.on("focus", function () {
+            $telInput.on("blur", function () {
+                if ($telInput.val() != "") {
+                    if (!isPoneAvailable($telInput)){
+                        alert_box("tc-pcp-tel","手机号码格式输入错误，请重新输入","");
+                    }
+                    // $telInput.focus();
+                }
+            });
+        });
+
+
+        //验证身份证号码输入
+        /*判断身份证号码*/
+        function isCardNum($cardInput) {
+            var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            // return pattern.test(card);
+            return pattern.test($cardInput.val());
+        }
+        $idInput.on("focus", function () {
+            $idInput.on("blur", function () {
+                if ($idInput.val() != ""){
+                    if (!isCardNum($idInput)){
+                        alert_box("tc-pcp-id","身份证号码格式错误，请重新输入！","");
+                    }
+                }
+            });
+        });
+
+
+        //弹窗：完善必填项
+        var value_1;
+        var value_2;
+        var value_3;
+        var value_4;
+        var value_5;
+        var value_6;
+
+        // 验证手机号
+        function isPhoneNo(phone) {
+            var pattern = /^1[34578]\d{9}$/;
+            return pattern.test(phone);
+        }
+
+        // 验证身份证
+        function isCardNo(card) {
+            var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            return pattern.test(card);
+        }
+
+        $(".bc-icon-box").on("click",function () {
+            value_1=$("#per-name").val().trim();
+            value_2=$("#per-sex").val().trim();
+            value_3=$("#per-age").val().trim();
+            value_4=$("#per-tel").val().trim();
+            value_5=$("#per-id").val().trim();
+            value_6=$("#per-address").val().trim();
+            if (value_1==""||value_2==""||value_3==""||value_4==""||value_5==""||value_6==""){
+                alert_box("tc-pcp-btx","请完善必填项","");
+            }else if (!isPhoneNo(value_4)){
+                alert_box("tc-pcp-tel","手机号码格式不对，请重新输入！","");
+            }else if(!isCardNo(value_5)){
+                alert_box("tc-pcp-id","身份证号码格式不对，请重新输入！","");
+            }else{
+                location.assign("personal_profile.html");
+            }
+        });
+
+
+    </script>
+</body>
+</html>

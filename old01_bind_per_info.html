@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>绑定个人信息</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+    <script src="js/distpicker.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+<div class="page-hd">
+        <span class="icon-back">
+            <a href="my_order_reserved.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+    绑定个人信息
+</div>
+<div class="sc-main-wrapper">
+    <form action="">
+        <div class="input-item-box">
+            <div class="input-tips">
+                请填写个人信息
+            </div>
+            <div class="inner-box">
+                <div class="input-item">
+                    <div class="item-name">受检人</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入姓名" id="per-name">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">性别</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="男" id="per-sex">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">年龄</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入年龄" id="per-age">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">联系方式</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入联系方式" id="per-tel">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">身份证号码</div>
+                    <div class="item-content">
+                        <input type="text" placeholder="请输入身份证号码" id="per-id">
+                    </div>
+                </div>
+                <div class="input-item">
+                    <div class="item-name">收件地址</div>
+                    <div class="item-content">
+                        <textarea placeholder="请输入收件地址" id="per-address"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notice">
+                <span>
+                    本检测涉及到您的个人健康信息，为了保护个人信息，请不要在他人终端上完成检测...
+                </span>
+            <a href="bind_per_info_consent_form.html">查看详情</a>
+        </div>
+        <div class="agreement">
+            <input type="checkbox" name="sc-check" id="sc-check">
+            <label for="sc-check">
+                <i class="iconfont check-icon"></i>
+                我已知悉
+            </label>
+        </div>
+        <div class="sc-next-icon">
+            <!--<a href="test_myself_self_collection_confirm.html">-->
+            <div class="next-icon">
+                <img src="img/next.png" alt="">
+            </div>
+            <!--</a>-->
+        </div>
+    </form>
+</div>
+
+
+
+
+<script>
+    var value_1;
+    var value_2;
+    var value_3;
+    var value_4;
+    var value_5;
+    var value_6;
+    var check_value;
+
+    var $telInput=$("#per-tel");
+    var $idInput=$("#per-id");
+
+    //验证手机号输入
+    $telInput.on("focus", function () {
+        $telInput.on("blur", function () {
+            if ($telInput.val() != "") {
+                if (!isPoneAvailable($telInput)) {
+                    alert_box("tc-sc-tel","手机号码输入有误，请重新输入！","");
+                }
+            }
+        });
+    });
+
+
+    //验证身份证号码输入
+    /*判断身份证号码*/
+    function isCardNum($cardInput) {
+        var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        // return pattern.test(card);
+       return pattern.test($cardInput.val());
+
+    }
+    $idInput.on("focus", function () {
+        $idInput.on("blur", function () {
+            if ($idInput.val() != ""){
+                if (!isCardNum($idInput)){
+                    alert_box("tc-sc-id","身份证号码格式输入错误，请重新输入!","");
+                }
+            }
+        });
+    });
+
+    //我已知悉 点击勾选状态切换
+    $(".agreement").on("click",function () {
+        check_value=$("#sc-check")[0].checked;
+        if (check_value) {
+            $(".check-icon").addClass("active");
+        }else{
+            $(".check-icon").removeClass("active");
+        }
+    });
+
+
+    // 验证手机号
+    function isPhoneNo(phone) {
+        var pattern = /^1[34578]\d{9}$/;
+        return pattern.test(phone);
+    }
+
+    // 验证身份证
+    function isCardNo(card) {
+        var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        return pattern.test(card);
+    }
+
+    $(".next-icon").on("click",function () {
+        value_1=$("#per-name").val().trim();
+        value_2=$("#per-sex").val().trim();
+        value_3=$("#per-age").val().trim();
+        value_4=$("#per-tel").val().trim();
+        value_5=$("#per-id").val().trim();
+        value_6=$("#per-address").val().trim();
+        check_value=$("#sc-check")[0].checked;
+        console.log(check_value);
+        if (value_1==""||value_2==""||value_3==""||value_4==""||value_5==""||value_6==""){
+            alert_box("tc-sc-btx","请完善必填项！","");
+        }else if (!isPhoneNo(value_4)){
+            alert_box("tc-sc-tel","手机号格式输入错误,请重新输入！","");
+        }else if (!isCardNo(value_5)){
+            alert_box("tc-sc-id","身份证号码格式输入错误，请重新输入!","");
+        }else if(!check_value){
+            alert_box("tc-sc-zxqr","请确认阅读并已知悉知情同意书！","");
+        }else{
+            alert_box("tc-sc-tbd","已绑定采样盒,请您耐心等待检测结果！","my_order_bound.html");
+        }
+    });
+
+</script>
+</body>
+</html>

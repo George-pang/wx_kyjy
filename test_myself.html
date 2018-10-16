@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <title>本人检测</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/login_base.js"></script>
+</head>
+<body>
+<div class="page-hd">
+        <span class="icon-back">
+            <a href="test-reservation.html">
+                <img src="img/back.png" alt=""  />
+            </a>
+        </span>
+    本人检测
+</div>
+<div class="tm-form-box">
+    <div class="form-box">
+        <div class="form-tips">
+            请选择检测类型
+        </div>
+        <form action="">
+            <div class="form-item">
+                <label for="type-check-01" class="type-check">
+                    <input type="radio" name="type-check" id="type-check-01" checked>
+                    <i class="iconfont active">&#xe60f;</i>
+                    <span>医护上门</span>
+                </label>
+            </div>
+            <div class="form-item">
+                <label for="type-check-02" class="type-check">
+                    <input type="radio" name="type-check" id="type-check-02" >
+                    <i class="iconfont">&#xe60f;</i>
+                    <span>到定点采血中心</span>
+                </label>
+            </div>
+            <div class="form-item">
+                <label for="type-check-03" class="type-check">
+                    <input type="radio" name="type-check" id="type-check-03" >
+                    <i class="iconfont">&#xe60f;</i>
+                    <span>自采/集采</span>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="tr-next-icon">
+    <div class="next-icon">
+        <img src="img/next.png" alt="">
+    </div>
+</div>
+
+<script>
+    $(function () {
+        //选中状态切换
+        $(".type-check").on("click",function () {
+            $(".type-check").find(".iconfont").removeClass("active");
+            $(this).find(".iconfont").addClass("active");
+        });
+
+        //跳转
+        $(".next-icon").on("click",function () {
+            var $rdInput1=$("#type-check-01");
+            var $rdInput2=$("#type-check-02");
+            var $rdInput3=$("#type-check-03");
+            var value_1=$rdInput1[0].checked;
+            var value_2=$rdInput2[0].checked;
+            var value_3=$rdInput3[0].checked;
+            if (value_1){
+                location.assign("test_myself_to_door.html");
+            }else if(value_2){
+                location.assign("test_myself_fixed_point.html");
+            }else if (value_3){
+                location.assign("test_application_form_01.html");
+            }
+        });
+    });
+</script>
+</body>
+</html>
